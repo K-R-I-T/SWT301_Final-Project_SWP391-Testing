@@ -1,0 +1,6 @@
+@font-face{
+    font-family: 'Acumin Pro Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Acumin Pro Bold'), url('../fonts/Acumin-BdPro.woff') format('woff');
+}
