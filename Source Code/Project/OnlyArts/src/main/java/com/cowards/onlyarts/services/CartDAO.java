@@ -22,10 +22,14 @@ import java.util.logging.Logger;
  */
 public class CartDAO {
 
-    private static final String GET_ALL_CART_BY_USER_ID = "SELECT [user_id], [artwork_id] FROM Carts WHERE user_id = ?";
-    private static final String INSERT_CART = "INSERT INTO Carts ([user_id], [artwork_id]) VALUES(?, ?)";
-    private static final String DELETE_CART = "DELETE FROM Carts WHERE artwork_id = ? AND user_id = ?";
-    private static final String DELETE_ALL_BY_USER_ID = "DELETE FROM Carts WHERE user_id = ?";
+    private static final String GET_ALL_CART_BY_USER_ID
+            = "SELECT [user_id], [artwork_id] FROM Carts WHERE user_id = ?";
+    private static final String INSERT_CART
+            = "INSERT INTO Carts ([user_id], [artwork_id]) VALUES(?, ?)";
+    private static final String DELETE_CART
+            = "DELETE FROM Carts WHERE artwork_id = ? AND user_id = ?";
+    private static final String DELETE_ALL_BY_USER_ID
+            = "DELETE FROM Carts WHERE user_id = ?";
 
     private static final DBContext DB = DBContext.getInstance();
 
@@ -41,7 +45,7 @@ public class CartDAO {
         return instance;
     }
 
-    public List<CartDTO> getAll(String user_id) {
+    public List<CartDTO> getAll(String userId) {
         Connection conn = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -49,7 +53,7 @@ public class CartDAO {
         try {
             conn = DB.getConnection();
             stm = conn.prepareStatement(GET_ALL_CART_BY_USER_ID);
-            stm.setString(1, user_id);
+            stm.setString(1, userId);
             rs = stm.executeQuery();
             while (rs.next()) {
                 CartDTO cartDTO = new CartDTO();

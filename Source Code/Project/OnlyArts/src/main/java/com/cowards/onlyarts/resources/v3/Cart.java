@@ -64,7 +64,7 @@ public class Cart {
                 return Response.status(Response.Status.UNAUTHORIZED)
                         .entity(new TokenERROR("Login timeout")).build();
             }
-            ArtworkDTO artworkDTO = artworkDao.getOne(artworkId);
+            ArtworkDTO artworkDTO = artworkDao.getArtwork(artworkId);
             if (artworkDTO.isPrivate()
                     || artworkDTO.isBanned()
                     || artworkDTO.isRemoved()) {

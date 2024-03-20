@@ -41,7 +41,7 @@ public class Artwork {
                         .build();
             }
 
-            ArtworkDTO artworkDTO = artworkDao.getOne(artworkId);
+            ArtworkDTO artworkDTO = artworkDao.getArtwork(artworkId);
             return Response.ok(artworkDTO).build();
         } catch (ArtworkERROR | TokenERROR e) {
             return Response.status(Response.Status.NOT_FOUND)
@@ -87,7 +87,7 @@ public class Artwork {
             @HeaderParam("authtoken") String tokenString) {
         try {
             TokenDTO tokenDTO = tokenDao.getToken(tokenString);
-            ArtworkDTO artworkDTO = artworkDao.getOne(artworkId);
+            ArtworkDTO artworkDTO = artworkDao.getArtwork(artworkId);
 
             if (tokenDTO.isExpired()) {
                 return Response.status(Response.Status.UNAUTHORIZED)

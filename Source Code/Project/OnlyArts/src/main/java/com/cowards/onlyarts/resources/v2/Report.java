@@ -105,7 +105,7 @@ public class Report {
                             sendResponseForReporter = notificationDAO.sendResponse(report.getReporterId(),
                                     "Thank you for your report, we had comfirmed that right!",
                                     0);
-                            sendResponseForUser = notificationDAO.sendResponse(artworkDAO.getOne(report.getArtworkId()).getOwnerId(),
+                            sendResponseForUser = notificationDAO.sendResponse(artworkDAO.getArtwork(report.getArtworkId()).getOwnerId(),
                                     "Warning: You are reported by someone, because of Copyright problem",
                                     0);
                             if (sendResponseForReporter && sendResponseForUser) {
